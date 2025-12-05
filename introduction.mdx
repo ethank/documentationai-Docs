@@ -1,0 +1,107 @@
+---
+title: Introduction
+description: Overview of DormWay and its core capabilities
+---
+
+## Getting Started
+
+DormWay is an innovative tool designed to help students stay organized throughout their semester. By uploading their syllabus, students receive personalized academic plans that keep them on track and prevent falling behind. This free service is available to students at thousands of schools, offering a simple and intuitive interface for academic success.
+
+DormWay transforms syllabus management into actionable plans, breaking down courses into manageable milestones and deadlines. Whether you're a freshman navigating your first semester or a senior balancing multiple courses, DormWay provides the structure you need to excel academically.
+
+<Columns cols={3}>
+  <Card title="Upload Syllabus" icon="upload" href="uploading-syllabus">
+    Easily upload your course syllabus to get started with personalized planning.
+  </Card>
+  <Card title="View Plans" icon="eye" href="managing-plans">
+    Access detailed study plans and track your academic progress.
+  </Card>
+  <Card title="Stay Organized" icon="check" href="integrations">
+    Integrate with your existing tools and maintain academic momentum.
+  </Card>
+</Columns>
+
+## Key Features
+
+<Steps>
+  <Step title="Upload Your Syllabus" icon="upload">
+    Simply upload your course syllabus in PDF or image format.
+  </Step>
+  <Step title="Generate Plan" icon="settings">
+    Our AI analyzes your syllabus and creates a personalized academic plan.
+  </Step>
+  <Step title="Track Progress" icon="eye">
+    Monitor your progress and receive reminders for upcoming deadlines.
+  </Step>
+  <Step title="Stay Ahead" icon="check-circle">
+    Never fall behind with proactive academic planning.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  DormWay is completely free and available to students at over 5,000 educational institutions worldwide.
+</Callout>
+
+## How It Works
+
+DormWay uses advanced AI to parse syllabus content and extract key information such as assignment deadlines, exam dates, and course requirements. The system then generates a comprehensive study plan that breaks down your semester into weekly and daily tasks.
+
+<Tabs>
+  <Tab title="Students" icon="users">
+    For students, DormWay provides peace of mind by organizing academic responsibilities and reducing stress.
+  </Tab>
+  <Tab title="Educators" icon="book-open">
+    Educators can recommend DormWay to help their students stay organized and succeed.
+  </Tab>
+  <Tab title="Administrators" icon="settings">
+    School administrators can integrate DormWay into their student success programs.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const syllabusData = {
+  courseName: 'Introduction to Computer Science',
+  assignments: [
+    { name: 'Project 1', dueDate: '2024-02-15' },
+    { name: 'Midterm Exam', dueDate: '2024-03-10' }
+  ]
+};
+
+fetch('/api/syllabi', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(syllabusData)
+}).then(response => response.json());
+  ```
+  ```python
+import requests
+
+syllabus_data = {
+  'course_name': 'Introduction to Computer Science',
+  'assignments': [
+    {'name': 'Project 1', 'due_date': '2024-02-15'},
+    {'name': 'Midterm Exam', 'due_date': '2024-03-10'}
+  ]
+}
+
+response = requests.post('/api/syllabi', json=syllabus_data)
+print(response.json())
+  ```
+</CodeGroup>
+
+<Expandable title="Common Questions" default-open="false">
+  <Expandable title="Is DormWay really free?" default-open="false">
+    Yes, DormWay is completely free for all students.
+  </Expandable>
+  <Expandable title="Which schools are supported?" default-open="false">
+    DormWay works with students from thousands of educational institutions worldwide.
+  </Expandable>
+  <Expandable title="How secure is my data?" default-open="false">
+    We use industry-standard encryption and never share your personal information.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Get started today by uploading your first syllabus and experiencing the power of personalized academic planning.
+</Callout>

@@ -1,0 +1,103 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for DormWay users
+---
+
+## Common Issues
+
+If you're experiencing problems with DormWay, check these common solutions first.
+
+<Columns cols={2}>
+  <Card title="Upload Problems" icon="upload" href="#upload-issues">
+    Issues with uploading or processing syllabi.
+  </Card>
+  <Card title="Plan Errors" icon="alert-circle" href="#plan-issues">
+    Problems with generated or edited plans.
+  </Card>
+</Columns>
+
+## Upload Issues
+
+<Steps>
+  <Step title="Check File Format" icon="file">
+    Ensure your file is PDF, JPG, or PNG and under size limits.
+  </Step>
+  <Step title="Verify Content" icon="eye">
+    Make sure the syllabus text is clear and legible.
+  </Step>
+  <Step title="Retry Upload" icon="refresh-cw">
+    Try uploading again after checking the above.
+  </Step>
+  <Step title="Contact Support" icon="message-square">
+    If issues persist, reach out to our support team.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Most upload issues are resolved by ensuring file quality and format compatibility.
+</Callout>
+
+## Plan Problems
+
+<Tabs>
+  <Tab title="Missing Tasks" icon="minus">
+    Some assignments not appearing in your plan.
+  </Tab>
+  <Tab title="Wrong Dates" icon="calendar">
+    Incorrect due dates extracted from syllabus.
+  </Tab>
+  <Tab title="Sync Issues" icon="refresh-cw">
+    Problems with calendar or LMS integrations.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const errorReport = {
+  errorType: 'upload_failed',
+  fileName: 'syllabus.pdf',
+  errorMessage: 'File processing timeout'
+};
+
+fetch('/api/support/tickets', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify(errorReport)
+});
+  ```
+  ```python
+import requests
+
+error_report = {
+  'error_type': 'upload_failed',
+  'file_name': 'syllabus.pdf',
+  'error_message': 'File processing timeout'
+}
+
+response = requests.post(
+  '/api/support/tickets',
+  json=error_report,
+  headers={'Authorization': f'Bearer {api_key}'}
+)
+print(response.json())
+  ```
+</CodeGroup>
+
+<Expandable title="Advanced Troubleshooting" default-open="false">
+  <Expandable title="Clear Cache" default-open="false">
+    Clear your browser cache and try accessing DormWay again.
+  </Expandable>
+  <Expandable title="Check Permissions" default-open="false">
+    Ensure DormWay has necessary permissions for integrations.
+  </Expandable>
+  <Expandable title="Update Browser" default-open="false">
+    Use the latest version of your web browser for best compatibility.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="alert">
+  If you're still experiencing issues, our support team is available 24/7 to help.
+</Callout>

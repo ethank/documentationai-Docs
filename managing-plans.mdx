@@ -1,0 +1,107 @@
+---
+title: Managing Plans
+description: How to view, edit, and track your academic plans in DormWay
+---
+
+## Viewing Your Plans
+
+Once your syllabus is uploaded and processed, DormWay generates a comprehensive academic plan that breaks down your semester into manageable tasks and milestones.
+
+<Columns cols={2}>
+  <Card title="Dashboard View" icon="layout" href="#dashboard">
+    See all your courses and upcoming tasks at a glance.
+  </Card>
+  <Card title="Course Details" icon="book" href="#details">
+    Dive deep into individual course requirements.
+  </Card>
+</Columns>
+
+## Plan Components
+
+Each academic plan includes several key components:
+
+<Steps>
+  <Step title="Weekly Schedule" icon="calendar">
+    Overview of assignments and due dates by week.
+  </Step>
+  <Step title="Study Tasks" icon="book-open">
+    Daily study recommendations and reading assignments.
+  </Step>
+  <Step title="Progress Tracking" icon="check-circle">
+    Mark completed tasks and monitor your advancement.
+  </Step>
+  <Step title="Reminders" icon="bell">
+    Automated notifications for upcoming deadlines.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Regularly update your plan to reflect completed work and changing priorities.
+</Callout>
+
+## Editing Plans
+
+DormWay allows you to customize your generated plans to better fit your learning style and schedule.
+
+<Tabs>
+  <Tab title="Add Tasks" icon="plus">
+    Include additional assignments or study sessions.
+  </Tab>
+  <Tab title="Modify Deadlines" icon="calendar">
+    Adjust due dates based on your availability.
+  </Tab>
+  <Tab title="Prioritize Items" icon="star">
+    Mark high-priority tasks for focused attention.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const planUpdate = {
+  taskId: 'assignment-1',
+  completed: true,
+  notes: 'Completed ahead of schedule'
+};
+
+fetch(`/api/plans/${planId}/tasks/${taskId}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify(planUpdate)
+});
+  ```
+  ```python
+import requests
+
+plan_update = {
+  'task_id': 'assignment-1',
+  'completed': True,
+  'notes': 'Completed ahead of schedule'
+}
+
+response = requests.put(
+  f'/api/plans/{plan_id}/tasks/{task_id}',
+  json=plan_update,
+  headers={'Authorization': f'Bearer {api_key}'}
+)
+print(response.json())
+  ```
+</CodeGroup>
+
+<Expandable title="Plan Management FAQ" default-open="false">
+  <Expandable title="Can I share plans with others?" default-open="false">
+    Currently, plans are private but you can export them as PDFs.
+  </Expandable>
+  <Expandable title="What if my syllabus changes?" default-open="false">
+    Upload the updated syllabus to regenerate your plan.
+  </Expandable>
+  <Expandable title="How do notifications work?" default-open="false">
+    Receive email and app notifications 24 hours before deadlines.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info">
+  Track your academic progress with visual progress bars and completion percentages.
+</Callout>

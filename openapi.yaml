@@ -1,0 +1,162 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: DormWay API
+  license:
+    name: MIT
+servers:
+  - url: https://api.dormway.com/v1
+paths:
+  /syllabi:
+    get:
+      summary: List all syllabi
+      operationId: listSyllabi
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An paged array of syllabi
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabi'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Upload a new syllabus
+      operationId: uploadSyllabus
+      responses:
+        201:
+          description: Syllabus uploaded successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /syllabi/{syllabusId}:
+    get:
+      summary: Retrieve details of a specific syllabus
+      operationId: getSyllabus
+      parameters:
+        - name: syllabusId
+          in: path
+          required: true
+          description: The unique identifier of the syllabus
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed syllabus information including extracted data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabus'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /plans:
+    get:
+      summary: List all academic plans for the authenticated user
+      operationId: listPlans
+      parameters:
+        - name: status
+          in: query
+          description: Filter plans by completion status
+          required: false
+          schema:
+            type: string
+            enum: [active, completed, archived]
+      responses:
+        200:
+          description: Array of academic plans with their current status and progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plans'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new academic plan from syllabus data
+      operationId: createPlan
+      responses:
+        201:
+          description: New academic plan created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Syllabus:
+      required:
+        - id
+        - courseName
+      properties:
+        id:
+          type: string
+        courseName:
+          type: string
+        assignments:
+          type: array
+          items:
+            type: object
+        tag:
+          type: string
+    Syllabi:
+      type: array
+      items:
+        $ref: '#/components/schemas/Syllabus'
+    Plan:
+      required:
+        - id
+        - syllabusId
+      properties:
+        id:
+          type: string
+        syllabusId:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: object
+        progress:
+          type: number
+    Plans:
+      type: array
+      items:
+        $ref: '#/components/schemas/Plan'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

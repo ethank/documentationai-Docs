@@ -1,0 +1,104 @@
+---
+title: Uploading Syllabus
+description: Guide to uploading and processing syllabi in DormWay
+---
+
+## Upload Process
+
+Uploading your syllabus is the first step to creating a personalized academic plan with DormWay. Our system supports multiple file formats and automatically extracts key information to build your study schedule.
+
+<Steps>
+  <Step title="Prepare Your File" icon="file">
+    Ensure your syllabus is in PDF, JPG, or PNG format and clearly readable.
+  </Step>
+  <Step title="Access Upload Page" icon="upload">
+    Navigate to the upload section in your DormWay dashboard.
+  </Step>
+  <Step title="Select File" icon="file-text">
+    Choose your syllabus file from your device.
+  </Step>
+  <Step title="Process Upload" icon="settings">
+    Click upload and wait for AI processing to complete.
+  </Step>
+  <Step title="Review Plan" icon="eye">
+    Review the generated academic plan and make any adjustments.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Processing typically takes 30-60 seconds depending on syllabus complexity.
+</Callout>
+
+## Supported Formats
+
+DormWay accepts various file formats to accommodate different syllabus types:
+
+| Format | Description | Max Size |
+|--------|-------------|----------|
+| PDF    | Scanned or digital PDFs | 10 MB   |
+| JPG    | Image files               | 5 MB    |
+| PNG    | High-quality images       | 5 MB    |
+
+<Tabs>
+  <Tab title="PDF Upload" icon="file-text">
+    For digital PDFs, upload directly without additional processing.
+  </Tab>
+  <Tab title="Image Upload" icon="image">
+    For scanned syllabi, ensure text is clear and legible.
+  </Tab>
+  <Tab title="Mobile Upload" icon="smartphone">
+    Use your phone's camera to capture syllabus pages.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="cURL,JavaScript">
+  ```bash
+curl -X POST \
+  https://api.dormway.com/v1/syllabi \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "file=@syllabus.pdf" \
+  -F "course_name=Computer Science 101"
+  ```
+  ```javascript
+const formData = new FormData();
+formData.append('file', syllabusFile);
+formData.append('course_name', 'Computer Science 101');
+
+fetch('/api/syllabi', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: formData
+}).then(response => response.json());
+  ```
+</CodeGroup>
+
+<Expandable title="Troubleshooting Upload Issues" default-open="false">
+  <Expandable title="File too large" default-open="false">
+    Compress your PDF or split into smaller files.
+  </Expandable>
+  <Expandable title="Text not recognized" default-open="false">
+    Ensure the syllabus text is clear and not handwritten.
+  </Expandable>
+  <Expandable title="Unsupported format" default-open="false">
+    Convert to PDF or image format before uploading.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="alert">
+  Always verify the extracted information matches your syllabus before proceeding.
+</Callout>
+
+## Best Practices
+
+To get the most accurate results from DormWay's AI processing:
+
+- Use high-resolution scans or digital PDFs
+- Ensure all text is clearly visible and not obscured
+- Include course name, instructor, and key dates in the upload
+- Review and correct any AI-extracted information
+
+<Expandable title="Advanced Upload Options" default-open="false">
+  For bulk uploads or API integration, contact our support team for enterprise solutions.
+</Expandable>

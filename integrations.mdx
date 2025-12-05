@@ -1,0 +1,109 @@
+---
+title: Integrations
+description: Connect DormWay with your favorite tools and platforms
+---
+
+## Available Integrations
+
+DormWay integrates with popular educational tools to enhance your academic planning experience.
+
+<Columns cols={3}>
+  <Card title="Google Calendar" icon="calendar" href="#calendar">
+    Sync your academic deadlines with Google Calendar.
+  </Card>
+  <Card title="Canvas LMS" icon="book" href="#canvas">
+    Connect with Canvas learning management system.
+  </Card>
+  <Card title="Microsoft Teams" icon="users" href="#teams">
+    Collaborate on study plans with your classmates.
+  </Card>
+</Columns>
+
+## Setting Up Integrations
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to the integrations section in your account settings.
+  </Step>
+  <Step title="Choose Integration" icon="plus">
+    Select the tool or platform you want to connect.
+  </Step>
+  <Step title="Authorize Access" icon="key">
+    Grant DormWay permission to access your data.
+  </Step>
+  <Step title="Configure Sync" icon="refresh-cw">
+    Set up automatic synchronization preferences.
+  </Step>
+  <Step title="Test Connection" icon="check">
+    Verify the integration is working correctly.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  All integrations use secure OAuth authentication and encrypt your data.
+</Callout>
+
+## Integration Details
+
+<Tabs>
+  <Tab title="Google Calendar" icon="calendar">
+    Automatically add assignment deadlines and study sessions to your calendar.
+  </Tab>
+  <Tab title="Canvas" icon="book">
+    Sync grades and upcoming assignments from your Canvas courses.
+  </Tab>
+  <Tab title="Microsoft Teams" icon="users">
+    Share study plans and collaborate on group projects.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const integrationConfig = {
+  provider: 'google-calendar',
+  syncFrequency: 'daily',
+  includeReminders: true
+};
+
+fetch('/api/integrations', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify(integrationConfig)
+});
+  ```
+  ```python
+import requests
+
+integration_config = {
+  'provider': 'google-calendar',
+  'sync_frequency': 'daily',
+  'include_reminders': True
+}
+
+response = requests.post(
+  '/api/integrations',
+  json=integration_config,
+  headers={'Authorization': f'Bearer {api_key}'}
+)
+print(response.json())
+  ```
+</CodeGroup>
+
+<Expandable title="Integration Troubleshooting" default-open="false">
+  <Expandable title="Connection failed" default-open="false">
+    Check your internet connection and try re-authorizing the integration.
+  </Expandable>
+  <Expandable title="Data not syncing" default-open="false">
+    Verify your account permissions and refresh the integration.
+  </Expandable>
+  <Expandable title="Duplicate events" default-open="false">
+    Remove and re-add the integration to clear duplicates.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Enable push notifications to stay updated on integration status changes.
+</Callout>
